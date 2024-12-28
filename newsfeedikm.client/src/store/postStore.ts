@@ -32,6 +32,9 @@ export const usePostStore = create<PostStore>((set: any) => ({
         }
     },
     updatePostById: async (postId: number, updatedPost: Post) => {
+        if (updatedPost.content.trim() === "") {
+        throw new Error("Post content cannot be empty");
+        }
         try {
             await updatePost(postId, updatedPost);
             set((state: any) => ({
@@ -42,6 +45,9 @@ export const usePostStore = create<PostStore>((set: any) => ({
         }
     },
     createPost: async (newPost: Post) => {
+        if (newPost.content.trim() === "") {
+            throw new Error("Post content cannot be empty");
+        }
         try {
             const response = await createPost(newPost);
             set((state: any) => ({
@@ -52,6 +58,9 @@ export const usePostStore = create<PostStore>((set: any) => ({
         }
     },
     updateComment: async (commentId: number, updatedComment: { postId: number, content: string }) => {
+        if (updatedComment.content.trim() === "") {
+            throw new Error("Comment content cannot be empty");
+        }
         try {
             const response = await updateComment(commentId, updatedComment);
             const updatedCommentData = response.data;
@@ -75,6 +84,9 @@ export const usePostStore = create<PostStore>((set: any) => ({
         }
     },
     addComment: async  (postId: number, comment: string) => {
+        if (comment.trim() === "") {
+            throw new Error("Comment content cannot be empty");
+        }
         try {
             const response = await createComment({ postId, content: comment });
             const newComment = response.data;

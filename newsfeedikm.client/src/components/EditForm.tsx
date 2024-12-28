@@ -18,6 +18,9 @@ const EditForm: React.FC<EditFormProps> = ({ title, initialData, dropdownData, o
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (formData.username.trim() === "" || formData.password.trim() === "" || formData.email.trim() === "" || formData.surname.trim() === "") {
+            throw new Error("Username and password cannot be empty");
+        }
         try {
             await createUser(formData);
             onSave(formData);
