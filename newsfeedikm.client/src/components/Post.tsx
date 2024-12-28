@@ -1,4 +1,4 @@
-﻿import React, {useEffect, useState} from "react";
+﻿import React, {useState} from "react";
 import { Post } from "../types/PostTypes";
 import Likes from "./Likes";
 import { PostEditForm } from "./PostEditForm";
@@ -95,7 +95,7 @@ const PostComponent: React.FC<PostProps> = ({ post }) => {
             <button onClick={() => setIsEditing(!isEditing)}>Update</button>
             <button onClick={() => setIsAddingComment(!isAddingComment)}>Add Comment</button>
             <UsersSelect
-                value={selectedAuthor}
+                value={selectedAuthor as number}
                 onChange={(e) => setSelectedAuthor(Number(e.target.value))}
             />
             <button onClick={handleAddLike}>Like</button>
