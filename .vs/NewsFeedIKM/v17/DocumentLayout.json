@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\drank\\RiderProjects\\NewsFeedIKM\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BBF701C4-0C05-4B0D-84B4-7B6764B7942F}|newsfeedikm.client\\newsfeedikm.client.esproj|c:\\users\\drank\\riderprojects\\newsfeedikm\\newsfeedikm.client\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BBF701C4-0C05-4B0D-84B4-7B6764B7942F}|newsfeedikm.client\\newsfeedikm.client.esproj|solutionrelative:newsfeedikm.client\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\drank\\RiderProjects\\NewsFeedIKM\\newsfeedikm.client\\index.html",
+              "RelativeDocumentMoniker": "newsfeedikm.client\\index.html",
+              "ToolTip": "C:\\Users\\drank\\RiderProjects\\NewsFeedIKM\\newsfeedikm.client\\index.html",
+              "RelativeToolTip": "newsfeedikm.client\\index.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-12-28T14:14:33.252Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

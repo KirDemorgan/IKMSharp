@@ -1,0 +1,6 @@
+@NewsFeedIKM.Server_HostAddress = http://localhost:5232
+
+GET {{NewsFeedIKM.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
