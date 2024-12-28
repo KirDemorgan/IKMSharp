@@ -52,6 +52,21 @@ export const useUserStore = create<UserStore>((set) => ({
         }
     },
     addUser: async (data: User) => {
+        if (!data.username || !data.email || !data.password || !data.surname) {
+            throw new Error("User data cannot be empty");
+        }
+
+        const trimmedData = {
+            username: data.username.trim(),
+            email: data.email.trim(),
+            password: data.password.trim(),
+            surname: data.surname.trim()
+        };
+
+        if (trimmedData.username === "" || trimmedData.email === "" || trimmedData.password === "" || trimmedData.surname === "") {
+            throw new Error("User data cannot be empty");
+        }
+
         try {
             await createUser(data);
             set((state) => ({
@@ -62,6 +77,9 @@ export const useUserStore = create<UserStore>((set) => ({
         }
     },
     updateUser: async (id: number, data: Partial<User>) => {
+        if (data.username?.trim() === "" || data.email?.trim() === "" || data.password?.trim() === "" || data.surname?.trim() === "") {
+            throw new Error("User data cannot be empty");
+        }
         try {
             const response = await updateUser(id, data);
             set((state) => ({
@@ -90,6 +108,9 @@ export const useUserStore = create<UserStore>((set) => ({
         }
     },
     addRole: async (newRoleName: string) => {
+        if (newRoleName.trim() === "") {
+            throw new Error("Role name cannot be empty");
+        }
         try {
             const response = await createRole({ roleName: newRoleName });
             set((state) => ({
@@ -103,6 +124,9 @@ export const useUserStore = create<UserStore>((set) => ({
         }
     },
     updateRole: async (id: number, roleName: string) => {
+        if (roleName.trim() === "") {
+            throw new Error("Role name cannot be empty");
+        }
         try {
             const response = await updateRole(id, { roleName });
             set((state) => ({

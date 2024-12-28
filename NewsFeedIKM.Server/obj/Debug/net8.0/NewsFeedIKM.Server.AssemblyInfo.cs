@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NewsFeedIKM.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d02a2098f5593a0c032c8162070a2405f93d2474")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e9356c7b191fce627a2d58f5c14069d9cf202691")]
 [assembly: System.Reflection.AssemblyProductAttribute("NewsFeedIKM.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NewsFeedIKM.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
