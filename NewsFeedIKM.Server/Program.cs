@@ -1,4 +1,3 @@
-
 using Microsoft.EntityFrameworkCore;
 using NewsFeedIKM.Server.Data;
 
@@ -11,6 +10,13 @@ namespace NewsFeedIKM.Server
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.WithOrigins("https://localhost:5173")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+            });
 
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>
@@ -28,6 +34,8 @@ namespace NewsFeedIKM.Server
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
+            app.UseCors("AllowSpecificOrigin");
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -38,7 +46,6 @@ namespace NewsFeedIKM.Server
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
