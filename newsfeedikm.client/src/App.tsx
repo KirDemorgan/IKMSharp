@@ -7,6 +7,8 @@ import EditForm from "./components/EditForm";
 import { usePostStore } from "./store/postStore";
 import { useUserStore } from "./store/userStore";
 import PostForm from "./components/PostForm";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AdminPage } from "./components/AdminPage";
 
 const App: React.FC = () => {
     const { fetchAllPosts, createPost } = usePostStore();
@@ -29,36 +31,46 @@ const App: React.FC = () => {
     };
 
     return (
-        <div>
-            <h1>Social App</h1>
-            <div>
-                <button onClick={() => { setShowAddPostForm(true); fetchAllUsers(); }}>
-                    Add New Post
-                </button>
-                <button onClick={() => setShowAddUserForm(true)}>
-                    Add New User
-                </button>
-            </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/admin" element={<AdminPage />} />
+                <Route path="/" element={
+                    <div>
+                    <h1>Social App</h1>
+                    <div>
+                        <button onClick={() => {
+                            setShowAddPostForm(true);
+                            fetchAllUsers();
+                        }}>
+                            Add New Post
+                        </button>
+                        <button onClick={() => setShowAddUserForm(true)}>
+                            Add New User
+                        </button>
+                    </div>
 
-            {showAddPostForm && (
-                <PostForm
-                    initialData={{ content: "", userId: users[0]?.id || 0 }}
-                    dropdownData={users.map((user) => ({ value: user.id, label: user.username }))}
-                    onSave={handleAddPost}
-                    onClose={() => setShowAddPostForm(false)}
-                />
-            )}
+                    {showAddPostForm && (
+                        <PostForm
+                            initialData={{content: "", userId: users[0]?.id || 0}}
+                            dropdownData={users.map((user) => ({value: user.id, label: user.username}))}
+                            onSave={handleAddPost}
+                            onClose={() => setShowAddPostForm(false)}
+                        />
+                    )}
 
-            {showAddUserForm && (
-                <EditForm
-                    title="Add New User"
-                    initialData={{ username: "", surname: "", email: "", password: "", roleId: 1 }}
-                    onSave={handleAddUser}
-                />
-            )}
+                    {showAddUserForm && (
+                        <EditForm
+                            title="Add New User"
+                            initialData={{username: "", surname: "", email: "", password: "", roleId: 1}}
+                            onSave={handleAddUser}
+                        />
+                    )}
 
-            <Feed />
-        </div>
+                    <Feed/>
+                </div>}/>
+
+            </Routes>
+        </BrowserRouter>
     );
 };
 
