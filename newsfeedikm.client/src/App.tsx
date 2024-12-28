@@ -24,10 +24,12 @@ const App: React.FC = () => {
 
     const handleAddPost = (data: any) => {
         createPost(data).then(() => setShowAddPostForm(false));
+        fetchAllPosts()
     };
 
     const handleAddUser = (data: any) => {
         addUser(data).then(() => setShowAddUserForm(false));
+        fetchAllUsers()
     };
 
     return (

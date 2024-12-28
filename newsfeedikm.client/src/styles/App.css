@@ -1,34 +1,182 @@
-﻿body {
-    font-family: Arial, sans-serif;
+﻿:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #ecf0f1;
+    --text-color: #2c3e50;
+    --font-family: 'Arial, sans-serif';
+    margin: 10px auto;
+    max-width: max-content;
+}
+
+body {
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
-.App {
-    max-width: 800px;
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 8px 16px; /* Adjusted padding for smaller buttons */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 8px; /* Added border-radius for rounded corners */
+    margin: 5px; /* Added margin for spacing */
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+.container {
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.feed {
-    margin-top: 20px;
+.header, .footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
 }
 
 .post {
-    border-bottom: 1px solid #ddd;
-    padding: 15px 0;
+    border:  2px solid var(--primary-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin:  10px 0;
 }
 
-.comments, .likes {
-    margin-top: 10px;
+.navbar a {
+    color: #fff;
+    margin: 0 10px;
 }
 
-h1, h2, h4 {
-    margin: 0;
-    color: #007bff;
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+}
+
+.card-text {
+    font-size: 1em;
+    margin: 0 0 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .main {
+        flex-direction: column;
+    }
+}
+
+input, select {
+    padding: 8px 16px; /* Padding for input and select */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 8px; /* Rounded corners */
+    margin: 5px; /* Margin for spacing */
+    font-family: var(--font-family); /* Consistent font */
+    font-size: 1em; /* Font size */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+input:focus, select:focus {
+    border-color: var(--primary-color); /* Border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+ul li {
+    padding: 8px 16px; /* Padding for list items */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 8px; /* Rounded corners */
+    margin: 5px 0; /* Margin for spacing */
+    background-color: #fff; /* Background color */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+ul li:hover {
+    background-color: var(--background-color); /* Background color on hover */
+}
+
+textarea {
+    padding: 8px 16px; /* Padding for textarea */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 8px; /* Rounded corners */
+    margin: 5px; /* Margin for spacing */
+    font-family: var(--font-family); /* Consistent font */
+    font-size: 1em; /* Font size */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+textarea:focus {
+    border-color: var(--primary-color); /* Border color on focus */
+    outline: none; /* Remove default outline */
 }

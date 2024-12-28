@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+﻿import React, {useEffect, useState} from "react";
 import { Post } from "../types/PostTypes";
 import Likes from "./Likes";
 import { PostEditForm } from "./PostEditForm";
@@ -7,6 +7,8 @@ import Comment from "./Comment";
 import { UsersSelect } from "./UsersSelect";
 // @ts-ignore
 import { usePostStore } from "../store/postStore";
+// @ts-ignore
+import { useUserStore} from "../store/userStore.ts";
 
 interface PostProps {
     post: Post;
@@ -14,9 +16,11 @@ interface PostProps {
 
 const PostComponent: React.FC<PostProps> = ({ post }) => {
     const { deletePostById, updatePostById, addComment, addLike, deleteLike, toggleLike, fetchAllPosts } = usePostStore();
+    const { users } =  useUserStore();
+
     const [isEditing, setIsEditing] = useState(false);
     const [isAddingComment, setIsAddingComment] = useState(false);
-    const [selectedAuthor, setSelectedAuthor] = useState<number | null>(null);
+    const [selectedAuthor, setSelectedAuthor] = useState<number | null>(users[0]?.id );
 
     const handleDelete = async () => {
         try {
@@ -91,7 +95,7 @@ const PostComponent: React.FC<PostProps> = ({ post }) => {
             <button onClick={() => setIsEditing(!isEditing)}>Update</button>
             <button onClick={() => setIsAddingComment(!isAddingComment)}>Add Comment</button>
             <UsersSelect
-                value={selectedAuthor || 0}
+                value={selectedAuthor}
                 onChange={(e) => setSelectedAuthor(Number(e.target.value))}
             />
             <button onClick={handleAddLike}>Like</button>
