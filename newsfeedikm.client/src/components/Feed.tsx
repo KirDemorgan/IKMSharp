@@ -1,25 +1,22 @@
-﻿import React, { useEffect, useState } from "react";
-import api from "../services/api";
-import { Post } from "../types/PostTypes";
+﻿import React from "react";
+// @ts-ignore
+import { usePostStore } from "../store/PostStore";
 import PostComponent from "./Post";
+import {Post} from "../types/PostTypes.tsx";
 
 const Feed: React.FC = () => {
-    const [posts, setPosts] = useState<Post[]>([]);
-
-    useEffect(() => {
-        api
-            .get<{ $values: Post[] }>("/Posts/flattened-feed")
-            .then((response) => setPosts(response.data.$values))
-            .catch((error) => console.error("Error fetching data:", error));
-    }, []);
+    const { posts, deletePostById, updatePostById } = usePostStore();
 
     return (
-        <div className="feed">
-            {posts.length > 0 ? (
-                posts.map((post) => <PostComponent key={post.postId} post={post} />)
-            ) : (
-                <p>Loading posts...</p>
-            )}
+        <div>
+            {posts.map((post: Post) => (
+                <PostComponent
+                    key={post.postId}
+                    post={post}
+                    onDelete={deletePostById}
+                    onUpdate={updatePostById}
+                />
+            ))}
         </div>
     );
 };
