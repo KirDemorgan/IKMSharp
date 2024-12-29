@@ -1,5 +1,4 @@
 ﻿import React, { useState } from "react";
-import { createUser } from "../services/api";
 
 interface EditFormProps {
     title: string;
@@ -22,7 +21,6 @@ const EditForm: React.FC<EditFormProps> = ({ title, initialData, dropdownData, o
             throw new Error("Username and password cannot be empty");
         }
         try {
-            await createUser(formData);
             onSave(formData);
         } catch (error) {
             console.error("Error creating user", error);
